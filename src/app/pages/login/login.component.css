@@ -1,0 +1,191 @@
+/* Estilos para el formulario */
+form {
+    max-width: 350px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  /* Estilos generales para contenedores */
+  div {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para etiquetas */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos para campos de entrada y campos de formulario de material */
+  input,
+  mat-form-field {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos para el botón */
+button {
+    padding: 12px 20px; 
+    background-color: #3d2768;
+    color: #fff;
+    border: 2px solid #7c7c7f; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; 
+    display: block;
+    margin: 0 auto; 
+  }
+  
+  /* Estilo al pasar el ratón sobre el botón */
+  button:hover {
+    background-color: #774b97; 
+    color: #fff;
+  }
+  
+ 
+  
+  /* Estilos para el botón deshabilitado */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Estilos para el contenedor principal */
+  .container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Estilos para secciones izquierda y derecha */
+  .left-section,
+  .right-section {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    animation-duration: 0.3s; /* Duración de la animación */
+    animation-fill-mode: both; /* La animación mantiene el estado final después de completarse */
+  }
+  
+  /* Estilos para la sección derecha con retardo de animación */
+  .right-section {
+    animation-delay: 0.5s;
+  }
+  
+  /* Animación de entrada desde la izquierda */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Animación de entrada desde la derecha */
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Clase para animación de entrada desde la izquierda */
+  .slide-in-left {
+    animation-name: slideInLeft;
+  }
+  
+  /* Clase para animación de entrada desde la derecha */
+  .slide-in-right {
+    animation-name: slideInRight;
+  }
+  
+  /* Estilos para la sección izquierda */
+  .left-section {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Animación de fundido para la imagen de la sección izquierda */
+  .left-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fadeInOut 10s ease infinite; /* 10s duración del cambio */
+  }
+  
+  /* Animación de fundido */
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+  }
+  
+  /* Imagen de la sección izquierda con transición */
+  .left-section img.image-with-transition {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fadeInOut 10s ease infinite !important;
+  }
+  
+  /* Imagen de la sección izquierda sin transición (sin animación) */
+  .left-section img:not(.image-with-transition) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: none !important; /* Deshabilita la animación */
+  }
+  
+  /* Capa de superposición para la sección izquierda */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+  }
+  
+  /* Estilos para la sección derecha */
+  .right-section {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    background-image: url('/assets/images/fondo_ase1.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* Capa antes de la imagen de fondo de la sección derecha */
+  .right-section::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    z-index: -1;
+  }
+  
+  /* Capa de superposición de imagen para la sección derecha */
+  .overlay-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 5px;
+    height: 5px;
+  }
+  

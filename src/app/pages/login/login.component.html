@@ -1,2 +1,54 @@
-<p>login</p>
-<button mat-raised-button color="primary" (click)="login()">Iniciar sesion</button>
+<div class="container">
+  <!-- Sección izquierda con imagen que cambia -->
+  <div class="left-section slide-in-left">
+    @for (imageUrl of imageUrlsLeft; track imageUrl; let i = $index) {
+      @if (currentLeftImageIndex === i) {
+        <img [src]="imageUrl" alt="Imagen Cambiante Izquierda" class="image-with-transition">
+      }
+    }
+    <div class="overlay"></div>
+    <img src="assets/images/aseAdmin.png" alt="Capa PNG con transparencia" class="overlay-image static-image" style="width: 200px; height: auto;">
+  </div>
+
+  <!-- Sección derecha con el formulario de inicio de sesión -->
+  <div class="right-section slide-in-right">
+    <img src="assets/images/logo-ase.png" alt="Imagen Encima del Login" class="above-login-image" style="width: 150px; height: auto;">
+
+    <!-- <form  #loginForm = "ngForm" (ngSubmit) = "onSubmit(loginForm)"> -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-form-field>
+          <mat-label>Email:</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Ingrese su email">
+        </mat-form-field>
+        @if (loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched) {
+          <div>
+            El email es requerido.
+          </div>
+        }
+        @if (loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched) {
+          <div>
+            Por favor, ingrese un email válido.
+          </div>
+        }
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Contraseña:</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="Ingrese su contraseña">
+        </mat-form-field>
+        @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+          <div>
+            La contraseña es requerida.
+          </div>
+        }
+        @if (loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched) {
+          <div>
+            La contraseña debe tener al menos 6 caracteres.
+          </div>
+        }
+      </div>
+      <button type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+    </form>
+  </div>
+</div>
